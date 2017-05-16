@@ -57,9 +57,12 @@ Display::~Display() {
 	std::cout << "Window's closed" << std::endl;
 }
 
-void Display::update() {
-
+void Display::clear() {
+	glClearColor(m_red, m_green, m_blue, m_alpha);
 	glClear(GL_COLOR_BUFFER_BIT);
+}
+
+void Display::update() {
 	// allows the double buffer to do its job
 	// this allows to never show an image that still is in the drawing process
 	SDL_GL_SwapWindow(m_window);
@@ -74,7 +77,10 @@ void Display::update() {
 
 void Display::changeBackgroundColor(float red, float green, float blue,
 									float alpha) {
-	glClearColor(red, green, blue, alpha);
+	m_red = red;
+	m_green = green;
+	m_blue = blue;
+	m_alpha = alpha;
 }
 
 bool Display::isClosed() {
