@@ -1,4 +1,6 @@
 *
-!src/
-!res/
-!lib/
+!readme.rd
+!.gitignore
+!res/*
+!src/*
+!lib/*
