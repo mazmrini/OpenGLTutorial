@@ -10,6 +10,7 @@
 #include "display.h"
 #include "shader.h"
 #include "mesh.h"
+#include "texture.h"
 
 using namespace std;
 
@@ -19,11 +20,12 @@ int main() {
 
 	// extensions are added in constructor
 	Shader shader("./res/basicShader");
+	Texture texture("./res/bricks.jpg");
 
 	// coordinates are as in a normal graph in (x, y, z) format
-	Vertex vertices[] = { Vertex(glm::vec3(-0.25, -0.25, 0)),
-						  Vertex(glm::vec3(0, 0.25, 0)),
-						  Vertex(glm::vec3(0.25, -0.25, 0))
+	Vertex vertices[] = { Vertex(glm::vec3(-0.5, -0.5, 0), glm::vec2(0.0, 0.0)),
+						  Vertex(glm::vec3(0, 0.5, 0), glm::vec2(0.5, 1.0)),
+						  Vertex(glm::vec3(0.5, -0.5, 0), glm::vec2(1.0, 0))
 						};
 
 	unsigned int nbVertices = sizeof(vertices) / sizeof(vertices[0]);
@@ -33,6 +35,7 @@ int main() {
 		display.clear();
 
 		shader.bind();
+		//texture.bind(0);
 		mesh.draw();
 
 		display.update();
